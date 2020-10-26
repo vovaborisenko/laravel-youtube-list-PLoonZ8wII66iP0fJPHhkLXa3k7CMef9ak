@@ -15,6 +15,16 @@
 
 [ссылка на youtube playlist](https://www.youtube.com/playlist?list=PLoonZ8wII66iP0fJPHhkLXa3k7CMef9ak)
 
+### lesson 11
+
+[Добавлена аутентификация](https://laravel.com/docs/7.x/authentication)
+```
+composer require laravel/ui
+php artisan ui vue --auth
+npm i
+npm run dev
+```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
