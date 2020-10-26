@@ -36,6 +36,12 @@ npm run dev
 Добавлены пути для категорий.
 
 ---
+### lesson 14
+### lesson 15
+
+Добавлен вывод категорий в таблице с пагинацией
+
+---
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
