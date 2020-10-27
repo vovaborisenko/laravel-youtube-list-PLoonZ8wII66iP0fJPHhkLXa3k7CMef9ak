@@ -39,10 +39,10 @@
                                 placeholder="Выберите категорию"
                                 required
                             >
-                                @foreach ($categoryList as $item)
-                                    <option value="{{ $item->id }}"
-                                        @if ($item->parent_id == $item->id) selected @endif
-                                    >{{ $item->id }}. {{ $item->title }}</option>
+                                @foreach ($categoryList as $option)
+                                    <option value="{{ $option->id }}"
+                                        @if ($item->parent_id == $option->id) selected @endif
+                                    >{{ $option->id }}. {{ $option->title }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -52,7 +52,7 @@
                                 id="description"
                                 rows="3"
                                 class="form-control"
-                            >{{ $item->description }}</textarea>
+                            >{{ old('description', $item->description) }}</textarea>
                         </div>
                     </div>
                 </div>
