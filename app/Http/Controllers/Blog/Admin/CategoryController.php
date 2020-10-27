@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Blog\Admin;
 
-use Illuminate\Http\Request;
 use App\Models\BlogCategory;
+use Illuminate\Http\Request;
 
 class CategoryController extends BaseController
 {
@@ -59,7 +59,10 @@ class CategoryController extends BaseController
      */
     public function edit($id)
     {
-        //
+        $item = BlogCategory::findOrFail($id);
+        $categoryList = BlogCategory::all();
+
+        return view('blog.admin.category.edit', compact('item', 'categoryList'));
     }
 
     /**
@@ -71,7 +74,7 @@ class CategoryController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        //
+        dd(__METHOD__, $request->all(), $id);
     }
 
     /**
