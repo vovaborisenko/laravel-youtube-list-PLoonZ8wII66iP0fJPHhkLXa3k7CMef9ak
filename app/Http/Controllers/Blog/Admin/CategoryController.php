@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Blog\Admin;
 
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
+use App\Http\Requests\BlogCategoryUpdateRequest;
 
 class CategoryController extends BaseController
 {
@@ -68,11 +69,11 @@ class CategoryController extends BaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\BlogCategoryUpdateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BlogCategoryUpdateRequest $request, $id)
     {
         $item = BlogCategory::find($id);
 
