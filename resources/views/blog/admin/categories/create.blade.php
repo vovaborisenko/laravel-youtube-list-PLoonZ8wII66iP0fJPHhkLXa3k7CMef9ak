@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="{{ route('blog.admin.categories.update', $item->id) }}" method="post">
-    @method('patch')
+<form action="{{ route('blog.admin.categories.store') }}" method="post">
     @csrf
     <div class="container">
         <div class="row justify-content-center">

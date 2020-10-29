@@ -73,6 +73,33 @@
         </nav>
 
         <main class="py-4">
+            <div class="container">
+                @if ($errors->any())
+                    <div class="row justify-content-center">
+                        <div class="col-md-11">
+                            <div class="alert alert-danger" role="alert">
+                                <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                {{ $errors->first() }}
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                @if (session('success'))
+                    <div class="row justify-content-center">
+                        <div class="col-md-11">
+                            <div class="alert alert-success" role="alert">
+                                <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                {{ session('success') }}
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            </div>
             @yield('content')
         </main>
     </div>
