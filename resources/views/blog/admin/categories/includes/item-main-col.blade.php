@@ -17,7 +17,7 @@
                                 class="form-control"
                                 type="text"
                                 name="title"
-                                value="{{$item->title}}"
+                                value="{{ old('title', $item->title) }}"
                                 minlength="3"
                                 required
                             >
@@ -28,7 +28,7 @@
                                 class="form-control"
                                 type="text"
                                 name="slug"
-                                value="{{$item->slug}}"
+                                value="{{ old('slug', $item->slug) }}"
                             >
                         </div>
                         <div class="form-group">
@@ -41,7 +41,7 @@
                             >
                                 @foreach ($categoryList as $option)
                                     <option value="{{ $option->id }}"
-                                        @if ($item->parent_id == $option->id) selected @endif
+                                        @if ( old('parent_id', $item->parent_id) == $option->id) selected @endif
                                     >{{ $option->id }}. {{ $option->title }}</option>
                                 @endforeach
                             </select>
