@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Blog\Admin;
 use Illuminate\Support\Str;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
+use App\Repositories\BlogCategoryRepository;
 use App\Http\Requests\BlogCategoryCreateRequest;
 use App\Http\Requests\BlogCategoryUpdateRequest;
 
@@ -81,10 +82,15 @@ class CategoryController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, BlogCategoryRepository $repository)
     {
-        $item = BlogCategory::findOrFail($id);
-        $categoryList = BlogCategory::all();
+        $item = $repository->getForEdit($id);
+
+        if (empty($item)) {
+            abort(404);
+        }
+
+        $categoryList = $repository->getForComboBox();
 
         return view('blog.admin.categories.edit', compact('item', 'categoryList'));
     }
