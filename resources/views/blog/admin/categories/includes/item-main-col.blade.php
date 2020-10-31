@@ -42,7 +42,7 @@
                                 @foreach ($categoryList as $option)
                                     <option value="{{ $option->id }}"
                                         @if ( old('parent_id', $item->parent_id) == $option->id) selected @endif
-                                    >{{ $option->id }}. {{ $option->title }}</option>
+                                    >{{ $option->option_label }}</option>
                                 @endforeach
                             </select>
                         </div>

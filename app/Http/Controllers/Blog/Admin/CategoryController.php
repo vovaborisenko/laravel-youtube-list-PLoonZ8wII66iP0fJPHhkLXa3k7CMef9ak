@@ -9,8 +9,28 @@ use App\Repositories\BlogCategoryRepository;
 use App\Http\Requests\BlogCategoryCreateRequest;
 use App\Http\Requests\BlogCategoryUpdateRequest;
 
+/**
+ * Управление категориями блога
+ *
+ * @package App\Http\Controllers\Blog\Admin
+ */
 class CategoryController extends BaseController
 {
+    /**
+     * @var BlogCategoryRepository
+     */
+    private $blogCategoryRepository;
+
+    /**
+     * CategoryController constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->blogCategoryRepository = app(BlogCategoryRepository::class);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +38,7 @@ class CategoryController extends BaseController
      */
     public function index()
     {
-        $paginator = BlogCategory::paginate(20);
+        $paginator = $this->blogCategoryRepository->getAllWithPaginate(10);
 
         return view('blog.admin.categories.index', compact('paginator'));
     }
@@ -31,7 +51,7 @@ class CategoryController extends BaseController
     public function create()
     {
         $item = new BlogCategory();
-        $categoryList = BlogCategory::all();
+        $categoryList = $this->blogCategoryRepository->getForComboBox();
 
         return view('blog.admin.categories.create', compact('item', 'categoryList'));
     }
@@ -84,13 +104,13 @@ class CategoryController extends BaseController
      */
     public function edit($id, BlogCategoryRepository $repository)
     {
-        $item = $repository->getForEdit($id);
+        $item = $this->blogCategoryRepository->getForEdit($id);
 
         if (empty($item)) {
             abort(404);
         }
 
-        $categoryList = $repository->getForComboBox();
+        $categoryList = $this->blogCategoryRepository->getForComboBox();
 
         return view('blog.admin.categories.edit', compact('item', 'categoryList'));
     }
@@ -104,7 +124,7 @@ class CategoryController extends BaseController
      */
     public function update(BlogCategoryUpdateRequest $request, $id)
     {
-        $item = BlogCategory::find($id);
+        $item = $this->blogCategoryRepository->getForEdit($id);
 
         if ( empty( $item ) ) {
 

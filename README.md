@@ -80,6 +80,12 @@ npm run dev
 Изучение и добавление репозиториев
 
 ---
+### lesson 30
+### lesson 31
+
+Добавлено использование репозиториев в CaregoryController
+
+---
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
