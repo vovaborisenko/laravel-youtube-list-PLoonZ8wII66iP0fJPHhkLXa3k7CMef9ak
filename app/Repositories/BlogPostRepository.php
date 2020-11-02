@@ -60,10 +60,19 @@ class BlogPostRepository extends CoreRepository
      */
     public function getAllWithPaginate($perPage = null)
     {
-        $columns = ['id', 'title'];
+        $columns = [
+            'id',
+            'title',
+            'slug',
+            'is_published',
+            'published_at',
+            'user_id',
+            'category_id',
+        ];
 
         $result = $this->startConditions()
             ->select($columns)
+            ->orderBy('id', 'DESC')
             ->paginate($perPage);
 
         return $result;
