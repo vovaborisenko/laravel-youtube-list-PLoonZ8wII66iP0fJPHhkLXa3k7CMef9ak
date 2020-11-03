@@ -23,13 +23,13 @@
                             @foreach ($paginator as $item)
                                 <tr @if (!$item->is_published) style="background-color: #ccc" @endif>
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ $item->user_id }}</td>
-                                    <td>{{ $item->category_id }}</td>
+                                    <td>{{ $item->user->name }}</td>
+                                    <td>{{ $item->category->title }}</td>
                                     <td>
                                         <a href="{{ route('blog.admin.posts.edit', $item->id) }}">{{ $item->title }}</a>
                                     </td>
                                     <td>
-                                        {{ $item->published_at }}
+                                        {{ $item->published_at ? \Carbon\Carbon::parse($item->published_at)->format('d/M/y H:i') : '' }}
                                     </td>
                                 </tr>
                             @endforeach
