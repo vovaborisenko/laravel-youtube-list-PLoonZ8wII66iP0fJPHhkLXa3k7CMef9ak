@@ -101,6 +101,13 @@ npm run dev
 Добавлены отношения талиц БД
 
 ---
+### lesson 35
+### lesson 36
+### lesson 37
+### lesson 38
+Начато создание страницы редактирования статьи блога
+
+---
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

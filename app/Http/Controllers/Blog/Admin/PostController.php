@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
 use App\Repositories\BlogPostRepository;
+use App\Repositories\BlogCategoryRepository;
 use App\Http\Requests\BlogPostCreateRequest;
 use App\Http\Requests\BlogPostUpdateRequest;
 
@@ -22,6 +23,11 @@ class PostController extends BaseController
     private $blogPostRepository;
 
     /**
+     * @var BlogCategoryRepository
+     */
+    private $blogCategoryRepository;
+
+    /**
      * PostController constructor
      */
     public function __construct()
@@ -29,6 +35,7 @@ class PostController extends BaseController
         parent::__construct();
 
         $this->blogPostRepository = app(BlogPostRepository::class);
+        $this->blogCategoryRepository = app(BlogCategoryRepository::class);
     }
 
     /**
@@ -51,9 +58,9 @@ class PostController extends BaseController
     public function create()
     {
         $item = new BlogPost();
-        $categoryList = $this->blogPostRepository->getForComboBox();
+        $categoryList = $this->blogCategoryRepository->getForComboBox();
 
-        return view('blog.admin.categories.create', compact('item', 'categoryList'));
+        return view('blog.admin.posts.create', compact('item', 'categoryList'));
     }
 
     /**
@@ -110,9 +117,9 @@ class PostController extends BaseController
             abort(404);
         }
 
-        $categoryList = $this->blogPostRepository->getForComboBox();
+        $categoryList = $this->blogCategoryRepository->getForComboBox();
 
-        return view('blog.admin.categories.edit', compact('item', 'categoryList'));
+        return view('blog.admin.posts.edit', compact('item', 'categoryList'));
     }
 
     /**
