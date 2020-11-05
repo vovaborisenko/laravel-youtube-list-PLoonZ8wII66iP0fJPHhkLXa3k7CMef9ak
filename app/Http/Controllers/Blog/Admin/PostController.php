@@ -169,6 +169,6 @@ class PostController extends BaseController
      */
     public function destroy($id)
     {
-        //
+        dd(__METHOD__, $id, request()->all());  
     }
 }

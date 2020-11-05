@@ -15,4 +15,20 @@
         </div>
     </div>
 </form>
+<br>
+<form action="{{ route('blog.admin.posts.destroy', $item->id) }}" method="post">
+    @method('delete')
+    @csrf
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <button class="btn btn-danger">Удалить</button>
+                </div>
+            </div>
+            <div class="col-md-3">
+            </div>
+        </div>
+    </div>
+</form>
 @endsection
