@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Blog\Admin;
 
-use Illuminate\Support\Str;
+use Carbon\Carbon;
 use App\Models\BlogPost;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Repositories\BlogPostRepository;
-use App\Repositories\BlogCategoryRepository;
 use App\Http\Requests\BlogPostCreateRequest;
 use App\Http\Requests\BlogPostUpdateRequest;
+use App\Repositories\BlogCategoryRepository;
 
 /**
  * Управление поставми блога
@@ -136,7 +137,7 @@ class PostController extends BaseController
         if ( empty( $item ) ) {
 
             return back()
-                ->withErrors(['msg' => "Категории с id: {$id} не существует."])
+                ->withErrors(['msg' => "Статьи с id: {$id} не существует."])
                 ->withInput();
         }
 
@@ -146,12 +147,16 @@ class PostController extends BaseController
             $data['slug'] = Str::slug($data['title']);
         }
 
+        if (empty($item->published_at) && $data['is_published']) {
+            $data['published_at'] = Carbon::now();
+        }
+
         $result = $item->update($data);
 
         if ( $result ) {
 
             return redirect()
-                ->route('blog.admin.categories.edit', $item->id)
+                ->route('blog.admin.posts.edit', $item->id)
                 ->with(['success' => 'Успешно сохранено']);
         } else {
 
@@ -169,6 +174,6 @@ class PostController extends BaseController
      */
     public function destroy($id)
     {
-        dd(__METHOD__, $id, request()->all());  
+        dd(__METHOD__, $id, request()->all());
     }
 }
