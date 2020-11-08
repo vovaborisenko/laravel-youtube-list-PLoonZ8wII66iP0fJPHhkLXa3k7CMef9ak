@@ -67,7 +67,7 @@ class PostController extends BaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  BlogPostCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(BlogPostCreateRequest $request)
@@ -108,6 +108,7 @@ class PostController extends BaseController
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     * @param  BlogPostRepository $repository
      * @return \Illuminate\Http\Response
      */
     public function edit($id, BlogPostRepository $repository)
