@@ -59,16 +59,12 @@ class CategoryController extends BaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  BlogCategoryCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(BlogCategoryCreateRequest $request)
     {
         $data = $request->input();
-
-        if (empty($data['slug'])) {
-            $data['slug'] = Str::slug($data['title']);
-        }
 
         $item = (new BlogCategory())->create($data);
 
@@ -100,6 +96,7 @@ class CategoryController extends BaseController
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     * @param  BlogCategoryRepository  $repository
      * @return \Illuminate\Http\Response
      */
     public function edit($id, BlogCategoryRepository $repository)
@@ -134,10 +131,6 @@ class CategoryController extends BaseController
         }
 
         $data = $request->all();
-
-        if (empty($data['slug'])) {
-            $data['slug'] = Str::slug($data['title']);
-        }
 
         $result = $item->update($data);
 

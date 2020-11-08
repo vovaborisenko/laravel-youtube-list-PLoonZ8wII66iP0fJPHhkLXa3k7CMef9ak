@@ -20,6 +20,17 @@ class BlogPostObserver
     }
 
     /**
+     * Handle the blog post "created" event.
+     *
+     * @param  BlogPost  $blogPost
+     * @return void
+     */
+    public function created(BlogPost $blogPost)
+    {
+        //
+    }
+
+    /**
      * Handle the blog post "updating" event.
      *
      * @param  BlogPost  $blogPost
@@ -30,41 +41,6 @@ class BlogPostObserver
         $this->setPublishedAt($blogPost);
 
         $this->setSlug($blogPost);
-    }
-
-    /**
-     * Устанавливает значение поля published_at
-     *
-     * @param  BlogPost  $blogPost
-     */
-    public function setPublishedAt(BlogPost $blogPost)
-    {
-        if (empty($blogPost->published_at) && $blogPost->is_published) {
-            $blogPost->published_at = Carbon::now();
-        }
-    }
-
-    /**
-     * Устанавливает значение поля slug, если оно пустое
-     *
-     * @param  BlogPost  $blogPost
-     */
-    public function setSlug(BlogPost $blogPost)
-    {
-        if (empty($blogPost->slug)) {
-            $blogPost->slug = Str::slug($blogPost->title);
-        }
-    }
-
-    /**
-     * Handle the blog post "created" event.
-     *
-     * @param  BlogPost  $blogPost
-     * @return void
-     */
-    public function created(BlogPost $blogPost)
-    {
-        //
     }
 
     /**
@@ -109,5 +85,29 @@ class BlogPostObserver
     public function forceDeleted(BlogPost $blogPost)
     {
         //
+    }
+
+    /**
+     * Устанавливает значение поля published_at
+     *
+     * @param  BlogPost  $blogPost
+     */
+    protected function setPublishedAt(BlogPost $blogPost)
+    {
+        if (empty($blogPost->published_at) && $blogPost->is_published) {
+            $blogPost->published_at = Carbon::now();
+        }
+    }
+
+    /**
+     * Устанавливает значение поля slug, если оно пустое
+     *
+     * @param  BlogPost  $blogPost
+     */
+    protected function setSlug(BlogPost $blogPost)
+    {
+        if (empty($blogPost->slug)) {
+            $blogPost->slug = Str::slug($blogPost->title);
+        }
     }
 }

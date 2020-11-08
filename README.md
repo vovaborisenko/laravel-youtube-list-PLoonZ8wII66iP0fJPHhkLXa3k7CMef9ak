@@ -123,6 +123,10 @@ php artisan make:observer BlogPostObserver --model=Models\BlogPost
 php artisan make:observer BlogCategoryObserver --model=Models\BlogCategory
 ```
 
+---
+### lesson 42
+Создан наблюдатель - BlogCategoryObserver
+
 
 ---
 ## About Laravel
