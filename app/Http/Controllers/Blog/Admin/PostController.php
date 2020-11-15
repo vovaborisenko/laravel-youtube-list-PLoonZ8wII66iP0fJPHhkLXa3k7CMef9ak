@@ -73,17 +73,12 @@ class PostController extends BaseController
     public function store(BlogPostCreateRequest $request)
     {
         $data = $request->input();
-
-        if (empty($data['slug'])) {
-            $data['slug'] = Str::slug($data['title']);
-        }
-
         $item = (new BlogPost())->create($data);
 
         if ($item) {
 
             return redirect()
-                ->route('blog.admin.categories.edit', $item->id)
+                ->route('blog.admin.posts.edit', $item->id)
                 ->with(['success' => 'Успешно создано']);
         } else {
 

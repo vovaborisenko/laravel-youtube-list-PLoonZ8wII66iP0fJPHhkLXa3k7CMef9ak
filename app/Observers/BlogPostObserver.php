@@ -16,7 +16,13 @@ class BlogPostObserver
      */
     public function creating(BlogPost $blogPost)
     {
-        //
+        $this->setPublishedAt($blogPost);
+
+        $this->setSlug($blogPost);
+
+        $this->setContextHtml($blogPost);
+
+        $this->setAuthor($blogPost);
     }
 
     /**
@@ -41,6 +47,8 @@ class BlogPostObserver
         $this->setPublishedAt($blogPost);
 
         $this->setSlug($blogPost);
+
+        $this->setContextHtml($blogPost);
     }
 
     /**
@@ -109,5 +117,28 @@ class BlogPostObserver
         if (empty($blogPost->slug)) {
             $blogPost->slug = Str::slug($blogPost->title);
         }
+    }
+
+    /**
+     * Устанавливает значение поля context_html, преобразуя context_raw
+     *
+     * @param  BlogPost  $blogPost
+     */
+    protected function setContextHtml(BlogPost $blogPost)
+    {
+        if ($blogPost->isDirty('context_raw')) {
+            // @TODO добавить преобразование MarkDown в HTML
+            $blogPost->context_html = $blogPost->context_raw;
+        }
+    }
+
+    /**
+     * Устанавливает значение поля used_id (автор статьи)
+     *
+     * @param  BlogPost  $blogPost
+     */
+    protected function setAuthor(BlogPost $blogPost)
+    {
+        $blogPost->user_id = auth()->id ?? BlogPost::UNKNOWN_USER;
     }
 }

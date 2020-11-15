@@ -129,6 +129,8 @@ php artisan make:observer BlogCategoryObserver --model=Models\BlogCategory
 
 ---
 ### lesson 43
+### lesson 44
+Создание новой статьи блога
 
 ---
 ## About Laravel

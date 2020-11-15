@@ -81,7 +81,11 @@
                                 <button class="close" type="button" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
-                                {{ $errors->first() }}
+                                <ul>
+                                    @foreach ($errors->all() as $error_msg)
+                                        <li>{{ $error_msg }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
                     </div>
