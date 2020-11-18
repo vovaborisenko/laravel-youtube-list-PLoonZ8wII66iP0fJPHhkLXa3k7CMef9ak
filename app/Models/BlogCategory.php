@@ -15,4 +15,25 @@ class BlogCategory extends Model
         'parent_id',
         'description',
     ];
+
+    /**
+     * Родительские категории.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parentCategory()
+    {
+        // статья принадлежит категории
+        return $this->belongsTo(BlogCategory::class, 'parent_id', 'id');
+    }
+
+    /**
+     * Accesssor родительской категории.
+     *
+     * @return string
+     */
+    public function getParentTitleAttribute()
+    {
+        return $this->parentCategory->title ?? 'Корень';
+    }
 }
