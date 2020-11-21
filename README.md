@@ -134,7 +134,12 @@ php artisan make:observer BlogCategoryObserver --model=Models\BlogCategory
 
 ---
 ### lesson 45
+### lesson 46
 Создание связей родительских категорий
+
+---
+### lesson 47
+Удаление записи
 
 ---
 ## About Laravel
