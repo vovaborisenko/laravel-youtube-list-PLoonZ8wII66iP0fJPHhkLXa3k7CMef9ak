@@ -83,7 +83,7 @@ npm run dev
 ### lesson 30
 ### lesson 31
 
-Добавлено использование репозиториев в CaregoryController
+Добавлено использование репозиториев в CategoryController
 
 ---
 ### lesson 32
@@ -140,6 +140,10 @@ php artisan make:observer BlogCategoryObserver --model=Models\BlogCategory
 ---
 ### lesson 47
 Удаление записи
+
+---
+### lesson 48
+Начало работы с [Collection](https://laravel.com/docs/8.x/collections)
 
 ---
 ## About Laravel
