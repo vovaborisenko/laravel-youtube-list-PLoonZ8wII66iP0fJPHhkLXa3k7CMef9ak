@@ -143,6 +143,7 @@ php artisan make:observer BlogCategoryObserver --model=Models\BlogCategory
 
 ---
 ### lesson 48
+### lesson 49
 Начало работы с [Collection](https://laravel.com/docs/8.x/collections)
 
 ---
